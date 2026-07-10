@@ -50,7 +50,7 @@ jobs:
       with: 
         token: ${{ secrets.GO_TOKEN }}
         repository: AWS-TF-POC/infrastructure
-        event-type: petclinic-ecs-rolling
+        event-type: petclinic-ecs-blue-green #  petclinic-ecs-rolling
         client-payload: |
           {
             "image_url": "${{ env.ECR_REPOSITORY }}:${{ github.sha }}"
