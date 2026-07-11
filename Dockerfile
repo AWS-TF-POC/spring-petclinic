@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM maven:3.9-eclipse-temurin-17 AS builder
+FROM maven:3.9-eclipse-temurin-24 AS build
 
 WORKDIR /app
 
@@ -7,10 +7,10 @@ WORKDIR /app
 COPY . .
 
 # Build the application
-RUN mvn clean package -DskipTests -Dmaven.wagon.http.retryHandler.class=standard -Dmaven.wagon.http.retryHandler.count=3
+RUN mvn clean package -DskipTests
 
 # Stage 2: Runtime
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:24-jdk
 
 WORKDIR /app
 
