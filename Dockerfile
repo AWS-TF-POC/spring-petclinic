@@ -6,11 +6,10 @@ WORKDIR /app
 # Copy the project files
 COPY . .
 
-# Build the application
-RUN mvn clean package -DskipTests
+RUN mvn -B clean package -DskipTests
 
 # Stage 2: Runtime
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
